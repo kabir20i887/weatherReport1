@@ -6,7 +6,7 @@ document.querySelector('.weather').addEventListener('submit',(e)=>{
 
 
     let location = input.value
-    let url =fetch(`http://localhost:3000/weather?place=${location}`)
+    let url =fetch(`/weather?place=${location}`)
    let elem= document.querySelector('.para')
 if(location){
     let text='loading...'

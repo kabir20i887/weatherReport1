@@ -5,7 +5,7 @@ const path = require('path')
 const app = express()
 const fileDir=__dirname;
 //to find the path to edit
-
+const port= process.env.PORT || 3000
 const newPath= path.join(fileDir,'/templates')
 const otherPath= path.join(fileDir,'/parcials')
 const forecast = require('../weather/forecast')
@@ -89,6 +89,6 @@ app.get('/about',(req,res)=>{
    res.render('error')
      
   })
-app.listen(3000,()=>{
-    console.log('here is it!')
+app.listen(port,()=>{
+    console.log(`here is it ${port}!`)
 })
