@@ -1,5 +1,6 @@
 const express = require('express');
 //to find the path
+const geocoding = require('../weather/Http')
 const path = require('path')
 const app = express()
 const fileDir=__dirname;
@@ -21,28 +22,6 @@ hbs.registerPartials(otherPath)
 //setting the templates
 app.set('view engine','hbs')
 app.set('views',newPath)
-
-const request = require('request')
-const geocoding = (location,data)=>{
-    const geocodingURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/"+encodeURIComponent(location)+".json?access_token=pk.eyJ1Ijoia2FiaXI3IiwiYSI6ImNrZmM3M244MDFjeWYyc2xjMXQ5cG8xczAifQ.u_MdsPGQ0YVfyEKn9leuFA";
-    request({url:geocodingURL,json:true},(rej,res)=>{
-        if(rej){
-            data('check your internet connection',undefined)
-        }else if(res.body.error){
-    data(res.body.error.info,undefined)
-        }else{
-            data(undefined,
-                {
-                   latitude: res.body.features[0].center[1],
-                   longitude:res.body.features[0].center[0],
-                   location:res.body.features[0].place_name,
-
-                }
-
-                   )
-        }
-    })
-}
 
 
 
