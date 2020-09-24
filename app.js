@@ -42,7 +42,6 @@ const forecast = (location,callback)=>{
   })
   }
 
-  const request = require('request')
   const geocoding = (location,data)=>{
       const geocodingURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/"+encodeURIComponent(location)+".json?access_token=pk.eyJ1Ijoia2FiaXI3IiwiYSI6ImNrZmM3M244MDFjeWYyc2xjMXQ5cG8xczAifQ.u_MdsPGQ0YVfyEKn9leuFA";
       request({url:geocodingURL,json:true},(rej,res)=>{
